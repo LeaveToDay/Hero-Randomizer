@@ -11,6 +11,6 @@ class HeroRepositoryImpl @Inject constructor(
 ) : HeroRepository {
     override fun getHero(heroId: Int): Single<Hero> {
         return api.getHero(heroId)
-            .onErrorReturn { return@onErrorReturn Hero(name = "error") }
+            .onErrorReturn { return@onErrorReturn Hero(name = it.toString()) }
     }
 }
